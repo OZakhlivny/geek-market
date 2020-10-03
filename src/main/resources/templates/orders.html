@@ -21,16 +21,31 @@
         <tr>
             <th>ID</th>
             <th>Клиент</th>
-            <th>Товар</th>
+            <th>Телефон</th>
+            <th>Адрес доставки</th>
             <th>Цена</th>
+            <th>Товары</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="o : ${orders}">
             <td th:text="${o.id}"/>
-            <td th:text="${o.customer.name}"/>
-            <td th:text="${o.product.title}"/>
-            <td th:text="${o.currentPrice}"/>
+            <td th:text="${o.customerName}"/>
+            <td th:text="${o.customerPhone}"/>
+            <td th:text="${o.customerAddress}"/>
+            <td th:text="${o.price}"/>
+            <td>
+            <table>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Количество</th>
+                </tr>
+                <tr th:each="oi : ${o.items}">
+                    <td th:text="${oi.product.title}"/>
+                    <td th:text="${oi.quantity}"/>
+                </tr>
+            </table>
+            </td>
         </tr>
         </tbody>
     </table>
